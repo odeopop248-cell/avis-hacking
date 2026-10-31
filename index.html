@@ -1,1518 +1,2597 @@
 <!DOCTYPE html>
+
 <html lang="fr">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>https://trustpilot.com - Profil</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+
 * {
+
   box-sizing: border-box;
+
 }
 
 body {
+
   font-family: "DM Sans", Arial, sans-serif;
+
   background: #fff;
+
   margin: 0;
+
   padding: 0;
+
 }
 
 /* ==========================================================
+
    OVERLAY / MOBILE
+
    ========================================================== */
 
 .overlay-backdrop {
+
   width: 100%;
+
   min-height: 100vh;
+
   display: flex;
+
   justify-content: center;
+
   align-items: flex-start;
+
   background: #ececef;
+
   padding: 12px;
+
 }
 
 .overlay-modal {
+
   width: 100%;
+
   max-width: 460px;
+
   background: #fff;
+
   border-radius: 14px;
+
   overflow: hidden;
+
   display: flex;
+
   flex-direction: column;
+
 }
 
 .browser-chrome {
+
   display: flex;
+
   align-items: center;
+
   gap: 14px;
+
   padding: 12px 18px;
+
   background: #f0f0f2;
-  border-bottom: 1px solid #e1e1e6;
+
+  
+  border: none;
+
   flex-shrink: 0;
+
 }
 
 .browser-close {
+
   background: none;
+
+  
   border: none;
+
   font-size: 22px;
+
   line-height: 1;
+
   color: #666;
+
   cursor: pointer;
+
   padding: 0;
+
   flex-shrink: 0;
+
 }
 
 .browser-close:hover {
+
   color: #1a1a1a;
+
 }
 
 .browser-url-bar {
+
   flex: 1;
+
   display: flex;
+
   align-items: center;
+
   gap: 8px;
+
   background: #fff;
-  border: 1px solid #e1e1e6;
+
+  
+  border: none;
+
   border-radius: 999px;
+
   padding: 8px 16px;
+
   font-size: 12px;
+
   color: #444;
+
   overflow: hidden;
+
   white-space: nowrap;
+
   text-overflow: ellipsis;
+
 }
 
 .browser-lock {
+
   width: 14px;
+
   height: 14px;
+
   color: #00b67a;
+
   flex-shrink: 0;
+
 }
 
 .overlay-scroll {
+
   flex: 1;
+
 }
 
 @media (max-width: 500px) {
+
   .overlay-backdrop {
+
     padding: 0;
+
     background: #fff;
+
     align-items: stretch;
+
   }
 
   .overlay-modal {
+
     max-width: 100%;
+
     min-height: 100vh;
+
     border-radius: 0;
+
   }
+
 }
 
 .page-wrapper {
+
   width: 100%;
+
   padding: 0 20px 40px;
+
   display: flex;
+
   flex-direction: column;
+
   gap: 24px;
+
 }
 
 /* ==========================================================
+
    NAVBAR
+
    ========================================================== */
 
 .site-navbar {
+
   width: 100%;
+
   background: #191a1e;
+
   padding: 16px 20px;
+
   margin-bottom: 24px;
+
 }
 
 .navbar-top {
+
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
+
 }
 
 .navbar-brand {
+
   display: flex;
+
   align-items: center;
+
   gap: 8px;
+
 }
 
 .navbar-star {
+
   width: 22px;
+
   height: 22px;
+
   fill: #00b67a;
+
 }
 
 .navbar-wordmark {
+
   color: #fff;
+
   font-size: 18px;
+
   font-weight: 800;
+
 }
 
 .navbar-icons {
+
   display: flex;
+
   align-items: center;
+
   gap: 18px;
+
 }
 
 .navbar-login {
+
   color: #6c8cff;
+
   font-size: 14px;
+
   font-weight: 700;
+
   text-decoration: none;
+
   white-space: nowrap;
+
 }
 
 .navbar-login:hover {
+
   color: #8fa5ff;
+
 }
 
 .navbar-breadcrumb {
+
   display: flex;
+
   align-items: center;
+
   gap: 6px;
+
   flex-wrap: wrap;
+
   margin-top: 14px;
+
   font-size: 13px;
+
 }
 
 .breadcrumb-dots {
+
   color: #6c8cff;
+
   letter-spacing: 1px;
+
   font-weight: 700;
+
 }
 
 .breadcrumb-sep {
+
   color: #777;
+
 }
 
 .breadcrumb-item {
+
   color: #a3a3ad;
+
 }
 
 .breadcrumb-item.current {
+
   color: #fff;
+
   font-weight: 700;
+
 }
 
 @media (max-width: 420px) {
+
   .site-navbar {
+
     padding: 14px 16px;
+
   }
 
   .navbar-wordmark {
+
     font-size: 16px;
+
   }
 
   .navbar-star {
+
     width: 20px;
+
     height: 20px;
+
   }
 
   .navbar-login {
+
     font-size: 13px;
+
   }
 
   .navbar-breadcrumb {
+
     font-size: 12px;
+
     gap: 4px;
+
   }
 
   .breadcrumb-item {
+
     max-width: 100%;
+
     white-space: normal;
+
   }
+
 }
 
 /* ==========================================================
+
    CARD 1 — Vente-unique profile card
+
    ========================================================== */
 
 .card {
+
   background: #fff;
+
   border-radius: 8px;
+
   padding: 24px 28px 28px;
+
   width: 100%;
+
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+
 }
 
 .top-row {
+
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
+
   margin-bottom: 18px;
+
 }
 
 .logo {
+
   display: flex;
+
   align-items: center;
+
   gap: 6px;
+
 }
 
 .logo-icon {
+
   width: 26px;
+
   height: 26px;
+
   background: #e6392f;
+
   border-radius: 6px 6px 6px 0;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   overflow: hidden;
+
 }
 
 .logo-icon svg {
+
   width: 16px;
+
   height: 16px;
+
   fill: #fff;
+
 }
 
 .logo-img {
+
   width: 100%;
+
   height: 100%;
+
   object-fit: cover;
+
   border-radius: 6px 6px 6px 0;
+
 }
 
 .logo-text {
+
   font-size: 13px;
+
   font-weight: 700;
+
   color: #111;
+
 }
 
 .visit-btn {
+
   display: inline-flex;
+
   align-items: center;
+
   gap: 6px;
-  border: 1.5px solid #3b3bce;
+
+  
+  border: none;
+
   color: #3b3bce;
+
   background: #fff;
+
   border-radius: 999px;
+
   padding: 8px 16px;
+
   font-size: 13px;
+
   font-weight: 600;
+
   cursor: pointer;
+
   white-space: nowrap;
+
   transition: background 0.15s ease;
+
   font-family: inherit;
+
 }
 
 .visit-btn:hover {
+
   background: #f4f4ff;
+
 }
 
 .visit-btn svg {
+
   width: 13px;
+
   height: 13px;
+
   stroke: #3b3bce;
+
 }
 
 .badges {
+
   display: flex;
+
   gap: 8px;
+
   margin-bottom: 16px;
+
   flex-wrap: wrap;
+
 }
 
 .badge {
+
   display: inline-flex;
+
   align-items: center;
+
   gap: 5px;
+
   font-size: 12px;
+
   padding: 5px 10px;
+
   border-radius: 5px;
-  border: 1px solid #ddd;
+
+  
+  border: none;
+
   color: #333;
+
 }
 
 .badge.verified {
-  border-color: #cdeccd;
+
+  
+  border: none;
+
   color: #1a1a1a;
+
 }
 
 .badge svg {
+
   width: 12px;
+
   height: 12px;
+
 }
 
 .company-name {
+
   font-size: 22px;
+
   font-weight: 800;
+
   color: #0a0a0a;
+
   margin: 0 0 8px 0;
+
   line-height: 1.2;
+
 }
 
 .rating-row {
+
   display: flex;
+
   align-items: center;
+
   gap: 8px;
+
   margin-bottom: 10px;
+
 }
 
 .card .review-count {
+
   color: #3b3bce;
+
   text-decoration: underline;
+
   font-size: 14px;
+
   font-weight: 600;
+
 }
 
 .dot {
+
   color: #999;
+
   font-size: 12px;
+
 }
 
 .card .stars {
+
   display: flex;
+
   gap: 3px;
+
 }
 
 .card .stars .star {
+
   width: 20px;
+
   height: 20px;
+
   background: #00b67a;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   border-radius: 3px;
+
   position: relative;
+
   overflow: hidden;
+
 }
 
 .card .stars .star.half::after {
+
   content: "";
+
   position: absolute;
+
   right: 0;
+
   top: 0;
+
   bottom: 0;
+
   width: 50%;
+
   background: #dcdce6;
+
 }
 
 .card .stars .star svg {
+
   width: 13px;
+
   height: 13px;
+
   fill: #fff;
+
   z-index: 1;
+
 }
 
 .rating-score {
+
   font-size: 14px;
+
   font-weight: 700;
+
   color: #1a1a1a;
+
 }
 
 .info-icon {
+
   width: 14px;
+
   height: 14px;
-  border: 1.5px solid #999;
+
+  
+  border: none;
+
   border-radius: 50%;
+
   display: inline-flex;
+
   align-items: center;
+
   justify-content: center;
+
   font-size: 10px;
+
   color: #999;
+
   font-weight: 600;
+
   cursor: pointer;
+
 }
 
 .category {
+
   color: #3b3bce;
+
   font-size: 13px;
+
   text-decoration: none;
+
   margin-bottom: 20px;
+
   display: block;
+
 }
 
 .category:hover {
+
   text-decoration: underline;
+
 }
 
 .write-review-btn {
+
   width: 100%;
+
   background: #3b3bce;
+
   color: #fff;
+
+  
   border: none;
+
   border-radius: 999px;
+
   padding: 14px;
+
   font-size: 15px;
+
   font-weight: 700;
+
   cursor: pointer;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   gap: 8px;
+
   transition: background 0.15s ease;
+
   font-family: inherit;
+
 }
 
 .write-review-btn:hover {
+
   background: #2f2fb0;
+
 }
 
 .write-review-btn svg {
+
   width: 15px;
+
   height: 15px;
+
   fill: #fff;
+
 }
 
 /* ==========================================================
+
    CARD 2 — TrustScore rating breakdown card
+
    ========================================================== */
 
 .rating-card {
+
   background: #fff;
+
   border-radius: 10px;
-  border: 1px solid #eee;
+
+  
+  border: none;
+
   padding: 22px 24px 16px;
+
   width: 100%;
+
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+
 }
 
 .rating-card .rating-main {
+
   display: flex;
+
   flex-direction: column;
+
   align-items: flex-start;
+
   gap: 2px;
+
   float: left;
+
   width: 110px;
+
 }
 
 .rating-card .score {
+
   font-size: 32px;
+
   font-weight: 800;
+
   color: #1a1a1a;
+
   line-height: 1.1;
+
 }
 
 .rating-card .score-label {
+
   font-size: 14px;
+
   font-weight: 700;
+
   color: #1a1a1a;
+
   margin-top: 4px;
+
 }
 
 .rating-card .stars {
+
   display: flex;
+
   gap: 2px;
+
   margin-top: 6px;
+
 }
 
 .rating-card .stars .star {
+
   width: 16px;
+
   height: 16px;
+
   background: #00b67a;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   border-radius: 3px;
+
   position: relative;
+
   overflow: hidden;
+
 }
 
 .rating-card .stars .star.half::after {
+
   content: "";
+
   position: absolute;
+
   right: 0;
+
   top: 0;
+
   bottom: 0;
+
   width: 50%;
+
   background: #dcdce6;
+
 }
 
 .rating-card .stars .star svg {
+
   width: 10px;
+
   height: 10px;
+
   fill: #fff;
+
   z-index: 1;
+
 }
 
 .rating-card .review-count {
+
   color: #444;
+
   text-decoration: none;
+
   font-size: 13px;
+
   font-weight: 400;
+
   margin-top: 6px;
+
 }
 
 .rating-bars {
+
   margin-left: 120px;
+
   display: flex;
+
   flex-direction: column;
+
   gap: 9px;
+
 }
 
 .bar-row {
+
   display: flex;
+
   align-items: center;
+
   gap: 8px;
+
 }
 
 .bar-label {
+
   font-size: 12px;
+
   color: #1a1a1a;
+
   width: 54px;
+
   flex-shrink: 0;
+
 }
 
 .bar-track {
+
   flex: 1;
+
   height: 8px;
+
   background: #e1e1e6;
+
   border-radius: 4px;
+
   overflow: hidden;
+
 }
 
 .bar-fill {
+
   height: 100%;
+
   border-radius: 4px;
+
 }
 
 .fill-5 {
+
   width: 82%;
+
   background: #00b67a;
+
 }
 
 .fill-4 {
+
   width: 9%;
+
   background: #73cf11;
+
 }
 
 .fill-3 {
+
   width: 3%;
+
   background: #ffce00;
+
 }
 
 .fill-2 {
+
   width: 2%;
+
   background: #ff8622;
+
 }
 
 .fill-1 {
+
   width: 4%;
+
   background: #ff3722;
+
 }
 
 .divider {
+
   clear: both;
+
+  
   border: none;
-  border-top: 1px solid #eee;
+
+  
+  border: none;
+
   margin: 18px 0 12px;
+
 }
 
 .trustscore-link {
+
   color: #3b3bce;
+
   font-size: 13px;
+
   font-weight: 600;
+
   text-decoration: underline;
+
 }
 
 .trustscore-link:hover {
+
   color: #2f2fb0;
+
 }
 
 /* ==========================================================
+
    CARD 3 — À propos de l'entreprise
+
    ========================================================== */
 
 .about-section {
+
   width: 100%;
+
   background: #fff;
+
 }
 
 .top-divider {
+
+  
   border: none;
-  border-top: 1px solid #e1e1e6;
+
+  
+  border: none;
+
   margin: 0 0 22px;
+
 }
 
 .about-title {
+
   font-size: 20px;
+
   font-weight: 800;
+
   color: #0a0a0a;
+
   margin: 0 0 16px;
+
 }
 
 .rank-box {
-  border: 1px solid #e1e1e6;
+
+  
+  border: none;
+
   border-radius: 6px;
+
   padding: 12px 14px;
+
   margin-bottom: 10px;
+
 }
 
 .rank-text {
+
   font-size: 14px;
+
   color: #1a1a1a;
+
   margin: 0 0 4px;
+
 }
 
 .rank-category {
+
   font-size: 14px;
+
   color: #3b3bce;
+
   text-decoration: none;
+
   font-weight: 600;
+
 }
 
 .rank-category:hover {
+
   text-decoration: underline;
+
 }
 
 /* ==========================================================
+
    CARD 4 — Avis clients
+
    ========================================================== */
 
 .reviews-wrapper {
+
   width: 100%;
+
   background: #fff;
+
 }
 
 .status-link {
+
   display: inline-flex;
+
   align-items: flex-start;
+
   gap: 6px;
+
   color: #1a1a1a;
+
   text-decoration: underline;
+
   font-size: 15px;
+
   font-weight: 600;
+
   line-height: 1.3;
+
   margin-bottom: 20px;
+
 }
 
 .status-link:hover {
+
   color: #3b3bce;
+
 }
 
 .external-icon {
+
   width: 15px;
+
   height: 15px;
+
   flex-shrink: 0;
+
   margin-top: 2px;
+
 }
 
 .reviews-row {
+
   display: flex;
+
   flex-direction: column;
+
   gap: 20px;
+
 }
 
 .review-card {
+
   width: 100%;
+
   padding-top: 16px;
-  border-top: 1px solid #e1e1e6;
+
+  
+  border: none;
+
 }
 
 .review-header {
+
   display: flex;
+
   align-items: flex-start;
+
   gap: 10px;
+
   margin-bottom: 12px;
+
 }
 
 .avatar {
+
   width: 40px;
+
   height: 40px;
+
   border-radius: 50%;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   color: #fff;
+
   font-weight: 700;
+
   font-size: 15px;
+
   flex-shrink: 0;
+
 }
 
 .user-info {
+
   flex: 1;
+
 }
 
 .user-name {
+
   font-size: 14px;
+
   font-weight: 700;
+
   color: #1a1a1a;
+
 }
 
 .user-meta {
+
   font-size: 12px;
+
   color: #666;
+
   margin-top: 2px;
+
 }
 
 .review-time {
+
   font-size: 12px;
+
   color: #666;
+
   white-space: nowrap;
+
 }
 
 .review-card .stars {
+
   display: flex;
+
   gap: 3px;
+
   margin-bottom: 12px;
+
 }
 
 .review-card .stars .star {
+
   width: 22px;
+
   height: 22px;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   border-radius: 3px;
+
 }
 
 .review-card .stars .star svg {
+
   width: 14px;
+
   height: 14px;
+
   fill: #fff;
+
 }
 
 .review-card .stars .star.filled {
+
   background: #00b67a;
+
 }
 
 .review-card .stars .star.empty {
+
   background: #e1e1e6;
+
 }
 
 /* Couleurs selon la note, comme sur Trustpilot */
+
 .review-card .stars.rating-5 .star.filled,
+
 .review-card .stars.rating-4 .star.filled {
+
   background: #00b67a;
+
 }
 
 .review-card .stars.rating-3 .star.filled {
+
   background: #ffce00;
+
 }
 
 .review-card .stars.rating-2 .star.filled {
+
   background: #ff8622;
+
 }
 
 .review-card .stars.rating-1 .star.filled {
+
   background: #ff3722;
+
 }
 
 .review-title {
+
   font-size: 15px;
+
   font-weight: 700;
+
   color: #1a1a1a;
+
   margin: 0 0 8px;
+
 }
 
 .review-body {
+
   font-size: 14px;
+
   color: #1a1a1a;
+
   line-height: 1.5;
+
   margin: 0 0 14px;
+
 }
 
 .tags {
+
   display: flex;
+
   gap: 8px;
+
   margin-bottom: 14px;
+
   flex-wrap: wrap;
+
 }
 
 .tag {
+
   background: #f2f2f2;
+
   color: #444;
+
   font-size: 12px;
+
   padding: 5px 10px;
+
   border-radius: 5px;
+
 }
 
 .actions {
+
   display: flex;
+
   align-items: center;
+
   gap: 18px;
+
 }
 
 .action-btn {
+
   display: inline-flex;
+
   align-items: center;
+
   gap: 6px;
+
   background: none;
+
+  
   border: none;
+
   color: #444;
+
   font-size: 13px;
+
   font-weight: 600;
+
   cursor: pointer;
+
   padding: 0;
+
   font-family: inherit;
+
 }
 
 .action-btn svg {
+
   width: 16px;
+
   height: 16px;
+
 }
 
 .action-btn:hover {
+
   color: #1a1a1a;
+
 }
 
 .flag-btn {
+
   background: none;
+
+  
   border: none;
+
   color: #444;
+
   cursor: pointer;
+
   margin-left: auto;
+
   padding: 0;
+
   display: flex;
+
   align-items: center;
+
 }
 
 .flag-btn svg {
+
   width: 16px;
+
   height: 16px;
+
 }
 
 .flag-btn:hover {
+
   color: #1a1a1a;
+
 }
 
 /* ==========================================================
+
    CARD 5 — Pagination
+
    ========================================================== */
 
 .pagination {
+
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
   gap: 12px;
+
 }
 
 .pagination-top {
+
   display: flex;
+
   align-items: center;
+
   gap: 6px;
+
 }
 
 .page-nav {
+
   background: none;
+
+  
   border: none;
+
   color: #444;
+
   font-size: 14px;
+
   font-weight: 600;
+
   font-family: inherit;
+
   cursor: pointer;
+
   padding: 8px 10px;
+
 }
 
 .page-nav:hover:not(:disabled) {
+
   color: #1a1a1a;
+
 }
 
 .page-nav:disabled,
+
 .page-next:disabled {
+
   opacity: 0.4;
+
   cursor: not-allowed;
+
 }
 
 .page-num {
+
   width: 34px;
+
   height: 34px;
+
+  
   border: none;
+
   border-radius: 6px;
+
   background: #f2f2f2;
+
   color: #1a1a1a;
+
   font-size: 14px;
+
   font-weight: 600;
+
   font-family: inherit;
+
   cursor: pointer;
+
   transition: background 0.15s ease;
+
 }
 
 .page-num:hover {
+
   background: #e1e1e6;
+
 }
 
 .page-num.active {
+
   background: #1a1a1a;
+
   color: #fff;
+
 }
 
 .page-next {
+
   background: #f2f2f2;
+
+  
   border: none;
+
   border-radius: 6px;
+
   color: #1a1a1a;
+
   font-size: 14px;
+
   font-weight: 600;
+
   font-family: inherit;
+
   padding: 10px 20px;
+
   cursor: pointer;
+
   transition: background 0.15s ease;
+
 }
 
 .page-next:hover:not(:disabled) {
+
   background: #e1e1e6;
+
 }
 
 /* ==========================================================
+
    CARD 6 — Footer
+
    ========================================================== */
 
 .site-footer {
+
   width: 100%;
+
   background: #17181c;
+
   padding: 32px 24px;
+
 }
 
 .footer-top {
+
   display: flex;
+
   flex-direction: column;
+
   gap: 24px;
+
   margin-bottom: 24px;
+
 }
 
 .footer-brand {
+
   max-width: 500px;
+
 }
 
 .footer-logo {
+
   display: flex;
+
   align-items: center;
+
   gap: 8px;
+
   margin-bottom: 14px;
+
 }
 
 .footer-star {
+
   width: 22px;
+
   height: 22px;
+
   fill: #00b67a;
+
 }
 
 .footer-wordmark {
+
   color: #fff;
+
   font-size: 18px;
+
   font-weight: 800;
+
 }
 
 .footer-recaptcha {
+
   color: #a3a3ad;
+
   font-size: 13px;
+
   line-height: 1.6;
+
   margin: 0;
+
 }
 
 .footer-privacy-link {
+
   color: #6c8cff;
+
   text-decoration: underline;
+
 }
 
 .footer-privacy-link:hover {
+
   color: #8fa5ff;
+
 }
 
 .footer-links {
+
   display: flex;
+
   flex-direction: column;
+
   align-items: flex-start;
+
   gap: 26px;
+
 }
 
 .footer-heading {
+
   color: #fff;
+
   font-size: 15px;
+
   font-weight: 700;
+
 }
 
 .footer-link {
+
   color: #fff;
+
   font-size: 15px;
+
   font-weight: 700;
+
   text-decoration: none;
+
   line-height: 1.4;
+
 }
 
 .footer-link:active {
+
   color: #6c8cff;
+
 }
 
 .footer-copyright {
+
   color: #a3a3ad;
+
   font-size: 13px;
+
   margin: 0;
+
   padding-top: 26px;
+
 }
 
 /* ==========================================================
+
    RESPONSIVE
+
    ========================================================== */
 
 @media (max-width: 600px) {
+
   body {
+
     padding: 20px 12px;
+
   }
 
   .top-row {
+
     gap: 12px;
+
   }
 
   .visit-btn {
+
     padding: 8px 12px;
+
   }
 
   .company-name {
+
     font-size: 21px;
+
   }
 
   .site-footer {
+
     padding: 24px 20px;
+
   }
+
 }
+
 </style>
+
 </head>
+
 <body>
 
 <div class="overlay-backdrop">
+
   <div class="overlay-modal">
 
     <!-- Barre de navigateur (overlay) -->
+
     <div class="browser-chrome">
-      <button class="browser-close" aria-label="Fermer">&times;</button>
+
+      <button class="browser-close" aria-label="Fermer">×</button>
+
       <div class="browser-url-bar">
+
         <svg viewBox="0 0 24 24" class="browser-lock" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+
         <span>trustpilot.com/review/fullhack.vercel.app/</span>
+
       </div>
+
     </div>
 
     <div class="overlay-scroll">
 
 <!-- Navbar -->
+
 <header class="site-navbar">
+
   <div class="navbar-top">
+
     <div class="navbar-brand">
+
       <svg viewBox="0 0 24 24" class="navbar-star"><path d="M12 2l2.9 6.9L22 9.6l-5.5 4.8L18.2 22 12 17.9 5.8 22l1.7-7.6L2 9.6l7.1-.7z"/></svg>
+
       <span class="navbar-wordmark">Trustpilot</span>
+
     </div>
 
     <a href="https://www.trustpilot.com/users/connect?redirect=&source_cta=header" target="_blank" class="navbar-login">Connexion</a>
+
   </div>
 
   <div class="navbar-breadcrumb">
-    <span class="breadcrumb-dots">&bull;&bull;&bull;</span>
-    <span class="breadcrumb-sep">&rsaquo;</span>
+
+    <span class="breadcrumb-dots">•••</span>
+
+    <span class="breadcrumb-sep">›</span>
+
     <span class="breadcrumb-item current">Consultant Informatique</span>
-    <span class="breadcrumb-sep">&rsaquo;</span>
+
+    <span class="breadcrumb-sep">›</span>
+
     <span class="breadcrumb-item">full-hack</span>
+
   </div>
+
 </header>
 
 <div class="page-wrapper">
 
 <!-- Numero 1 : carte profil -->
+
 <div class="card">
+
   <div class="top-row">
+
     <div class="logo">
+
       <div class="logo-icon">
+
         <img src="/images/pexels-tima-miroshnichenko-5380597.jpg" alt="Logo" class="logo-img">
+
       </div>
+
       <span class="logo-text">Full Hack</span>
+
     </div>
+
     <button class="visit-btn" onclick="window.open('https://fullhack.vercel.app/', '_blank')">
+
       Visiter le site web
+
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
         <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+
         <polyline points="15 3 21 3 21 9"/>
+
         <line x1="10" y1="14" x2="21" y2="3"/>
+
       </svg>
+
     </button>
+
   </div>
 
   <div class="badges">
+
     <span class="badge verified">
+
       <svg viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+
         <circle cx="12" cy="12" r="10" stroke="#2ecc71"/>
+
         <polyline points="8 12 11 15 16 9"/>
+
       </svg>
+
       Profil revendiqué • juillet 2026
+
     </span>
+
     <span class="badge">Abonnement payant à Trustpilot</span>
+
   </div>
 
   <h1 class="company-name">fullhack.vercel.app</h1>
 
   <div class="rating-row">
+
     <a href="#reviews-wrapper" class="review-count" onclick="document.getElementById('reviews-wrapper').scrollIntoView({behavior:'smooth'}); return false;">Avis 16</a>
-    <span class="dot">&bull;</span>
+
+    <span class="dot">•</span>
+
     <div class="stars">
+
       <div class="star filled"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9L22 9.6l-5.5 4.8L18.2 22 12 17.9 5.8 22l1.7-7.6L2 9.6l7.1-.7z"/></svg></div>
+
       <div class="star filled"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9L22 9.6l-5.5 4.8L18.2 22 12 17.9 5.8 22l1.7-7.6L2 9.6l7.1-.7z"/></svg></div>
+
       <div class="star filled"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9L22 9.6l-5.5 4.8L18.2 22 12 17.9 5.8 22l1.7-7.6L2 9.6l7.1-.7z"/></svg></div>
+
       <div class="star filled"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9L22 9.6l-5.5 4.8L18.2 22 12 17.9 5.8 22l1.7-7.6L2 9.6l7.1-.7z"/></svg></div>
+
       <div class="star half"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9L22 9.6l-5.5 4.8L18.2 22 12 17.9 5.8 22l1.7-7.6L2 9.6l7.1-.7z"/></svg></div>
+
     </div>
+
     <span class="rating-score">4,7</span>
+
     <span class="info-icon">i</span>
+
   </div>
 
   <a href="https://fr.trustpilot.com/categories/computer_consultant" target="_blank" rel="noopener" class="breadcrumb-item current">Consultant Informatique</a>
+
 <a href="https://www.trustpilot.com/evaluate/fullhack.vercel.app?addcompany=true" class="write-review-btn" style="text-decoration: none;" target="_blank" rel="noopener">
+
   <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+
   Écrire un avis
+
 </a>
+
 </div>
 
 <!-- Numero 2 : carte TrustScore -->
+
 <div class="rating-card">
+
   <div class="rating-main">
+
     <div class="score">4,7</div>
+
     <div class="score-label">Excellent</div>
+
     <div class="stars">
+
       <div class="star filled"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9L22 9.6l-5.5 4.8L18.2 22 12 17.9 5.8 22l1.7-7.6L2 9.6l7.1-.7z"/></svg></div>
+
       <div class="star filled"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9L22 9.6l-5.5 4.8L18.2 22 12 17.9 5.8 22l1.7-7.6L2 9.6l7.1-.7z"/></svg></div>
+
       <div class="star filled"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9L22 9.6l-5.5 4.8L18.2 22 12 17.9 5.8 22l1.7-7.6L2 9.6l7.1-.7z"/></svg></div>
+
       <div class="star filled"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9L22 9.6l-5.5 4.8L18.2 22 12 17.9 5.8 22l1.7-7.6L2 9.6l7.1-.7z"/></svg></div>
+
       <div class="star half"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9L22 9.6l-5.5 4.8L18.2 22 12 17.9 5.8 22l1.7-7.6L2 9.6l7.1-.7z"/></svg></div>
+
     </div>
+
     <div class="review-count">16 avis</div>
+
   </div>
 
   <div class="rating-bars">
+
     <div class="bar-row">
+
       <span class="bar-label">5 étoiles</span>
+
       <div class="bar-track"><div class="bar-fill fill-5"></div></div>
+
     </div>
+
     <div class="bar-row">
+
       <span class="bar-label">4 étoiles</span>
+
       <div class="bar-track"><div class="bar-fill fill-4"></div></div>
+
     </div>
+
     <div class="bar-row">
+
       <span class="bar-label">3 étoiles</span>
+
       <div class="bar-track"><div class="bar-fill fill-3"></div></div>
+
     </div>
+
     <div class="bar-row">
+
       <span class="bar-label">2 étoiles</span>
+
       <div class="bar-track"><div class="bar-fill fill-2"></div></div>
+
     </div>
+
     <div class="bar-row">
+
       <span class="bar-label">1 étoile</span>
+
       <div class="bar-track"><div class="bar-fill fill-1"></div></div>
+
     </div>
+
   </div>
 
   <hr class="divider">
 
   <a href="https://help.trustpilot.com/s/article/About-Trustpilots-review-labels?language=en_US" class="trustscore-link" target="_blank" rel="noopener">Comment le TrustScore est-il calculé ?</a>
+
 </div>
 
 <!-- Numero 3 : à propos de l'entreprise -->
+
 <div class="about-section">
+
   <hr class="top-divider">
 
   <h2 class="about-title">À propos de l'entreprise</h2>
 
   <div class="rank-box">
+
     <p class="rank-text">N° 27 des 58 meilleures entreprises de la catégorie</p>
+
     <a href="https://fr.trustpilot.com/categories/computer_consultant" target="_blank" rel="noopener" class="rank-category">Consultant Informatique</a>
+
   </div>
 
   <span class="info-icon">i</span>
+
 </div>
 
 <!-- Numero 4 : avis clients -->
+
 <div class="reviews-wrapper" id="reviews-wrapper">
 
   <a href="https://help.trustpilot.com/s/article/About-Trustpilots-review-labels?language=en_US" class="status-link">
+
     Comment Trustpilot attribue un statut aux avis
+
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="external-icon">
+
       <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+
       <polyline points="15 3 21 3 21 9"/>
+
       <line x1="10" y1="14" x2="21" y2="3"/>
+
     </svg>
+
   </a>
 
   <div class="reviews-row" id="reviews-row">
+
     <!-- Les avis sont générés dynamiquement par le script -->
+
   </div>
+
   </div>
 
 <!-- Numero 5 : pagination -->
+
 <div class="pagination">
+
   <div class="pagination-top">
-    <button class="page-nav" id="btn-prev">&larr; Précédent</button>
+
+    <button class="page-nav" id="btn-prev">← Précédent</button>
+
     <button class="page-num" data-page="1">1</button>
+
     <button class="page-num" data-page="2">2</button>
+
   </div>
-  <button class="page-next" id="btn-next">Suivant &rarr;</button>
+
+  <button class="page-next" id="btn-next">Suivant →</button>
+
 </div>
 
 </div>
 
 <!-- Numero 6 : footer -->
+
 <footer class="site-footer">
+
   <div class="footer-top">
+
     <div class="footer-brand">
+
       <div class="footer-logo">
+
         <svg viewBox="0 0 24 24" class="footer-star"><path d="M12 2l2.9 6.9L22 9.6l-5.5 4.8L18.2 22 12 17.9 5.8 22l1.7-7.6L2 9.6l7.1-.7z"/></svg>
+
         <span class="footer-wordmark">Trustpilot</span>
+
       </div>
+
       <p class="footer-recaptcha">
+
         Ce site est protégé par le service reCAPTCHA. Conformément à notre
+
         <a href="#" class="footer-privacy-link">politique de confidentialité</a>,
+
         nous collectons des signaux d'interactions et d'appareils à des fins de sécurité.
+
       </p>
+
     </div>
 
     <div class="footer-links">
+
      <span class="footer-heading">
+
   <a href="https://corporate.trustpilot.com/legal" style="color: inherit; text-decoration: none;" rel="noopener noreferrer">
+
     Informations légales
+
   </a>
+
 </span>
+
       <a href="https://corporate.trustpilot.com/legal"  class="footer-link">Politique de confidentialité</a>
+
       <a href="https://corporate.trustpilot.com/legal/for-reviewers/privacy-policy-end-user/jun-2026"  class="footer-link">Conditions d'utilisation</a>
+
       <a href="https://corporate.trustpilot.com/legal/for-reviewers/terms-of-use-for-consumers/feb-2025" class="footer-link">Conditions d'utilisation pour les auteurs d'avis</a>
+
       <a href="https://corporate.trustpilot.com/legal/for-reviewers/guidelines-for-reviewers/jun-2026" target="_blan" class="footer-link">Statut du système</a>
+
       <a href="https://www.trustpilot.com/users/connect?redirect=&source_cta=header" target="_blan" class="footer-link">Préférences en matière de cookies</a>
+
       <a href="https://corporate.trustpilot.com/legal/for-everyone/modern-slavery-and-human-trafficking-statement" target="_blan" class="footer-link">Déclaration relative à l'esclavage moderne</a>
+
     </div>
+
   </div>
 
-  <p class="footer-copyright">&copy; 2026 Trustpilot A/S. Tous droits réservés.</p>
+  <p class="footer-copyright">© 2026 Trustpilot A/S. Tous droits réservés.</p>
+
 </footer>
 
     </div>
+
   </div>
+
 </div>
 
 <script>
+
 // ==========================================================
+
 // Données des avis (contenu neutre, notes conservées telles quelles)
+
 // ==========================================================
+
 const reviewsData = [
+
   { name: "Julien Marchand", initials: "JM", color: "#3b3bce", rating: 5,
+
     title: "Excellente prestation",
+
     body: "C'est un vrai professionnel qui maîtrise parfaitement son domaine. Je recommande vivement !",
+
     date: "30 octobre 2026", reviews: "1 avis" },
 
   { name: "Sophie Lambert", initials: "SL", color: "#00b67a", rating: 5,
+
     title: "Au top",
+
     body: " Merci énormément ! Grâce à toi, j'ai pu dissiper mes doutes et avancer la tête haute. Franchement, ça m'a fait beaucoup de bien. Merci encore pour ton aide.",
+
     date: "22 octobre 2026", reviews: "1 avis" },
 
   { name: "Marc Bertrand", initials: "MB", color: "#ff8622", rating: 3,
+
     title: "Peu disponible",
+
     body: "Pour la récupération d'un compte Snap, je pensais que ça allait être assez rapide, mais ça a finalement pris pas mal de temps. Certes, tout s'est bien passé au final, mais ce n'était pas aussi rapide que je l'espérais pour quelqu'un qui se présente comme un pro.",
+
     date: "18 octobre 2026", reviews: "1 avis" },
 
   { name: "Nadia Petit", initials: "NP", color: "#e6392f", rating: 1,
+
     title: "Sans cœur",
+
     body: "Refuse catégoriquement d'aider gratuitement malgré mes difficultés de couple et mes fins de mois compliquées.",
+
     date: "15 octobre", reviews: "1 avis" },
 
   { name: "Thomas Girard", initials: "TG", color: "#3b3bce", rating: 5,
+
     title: "Trop fort",
+
     body: "Trop fort ! Prestation impeccable. En plus, t'es quelqu'un de vrai, tu proposes uniquement ce qui est faisable, sans promesses irréalisables.",
+
     date: "1 octobre 2026", reviews: "1 avis" },
 
 {
+
   name: "Camille Roux",
+
   initials: "CR",
+
   color: "#00b67a",
+
   rating: 4,
+
   title: "Je recommande",
+
   body: " C'est du vrai. J'ai eu à contacter plusieurs personnes, mais Alex est le seul qui m'a vraiment satisfait. Franchement, je ne regrette pas de l'avoir contacté.",
+
   date: "25 septembre 2026",
+
   reviews: "1 avis"
+
 },
 
-
   { name: "Karim Benali", initials: "KB", color: "#ff8622", rating: 2,
+
     title: "Incapable",
+
     body: "Impossible de récupérer mon compte Roblox 😭 Apparemment, ce n'était tout simplement pas possible dans mon cas.",
+
     date: "19 septembre 2026", reviews: "1 avis" },
 
   { name: "Élise Fontaine", initials: "EF", color: "#00b67a", rating: 5,
+
     title: "Satisfait",
+
     body: "Tout s'est bien déroulé, sans encombre. J'étais assez sceptique au début, mais finalement tout s'est bien passé. Comme promis, je vais le recommander à mes amis.",
+
     date: "14 septembre 2026", reviews: "1 avis" },
 
-
-
   { name: "Antoine Rousseau", initials: "AR", color: "#3b3bce", rating: 5,
+
     title: "Fiable",
+
     body: " Personne très fiable, je le recommande vivement. Rien à redire, je suis vraiment satisfait.",
+
     date: "10 septembre 2026", reviews: "1 avis" },
 
   { name: "Léa Dumas", initials: "LD", color: "#00b67a", rating: 4,
+
     title: "Recommandé",
+
     body: "Honnête, compétent et sérieux du début à la fin. Je recommande.",
+
     date: "23 aout 2026", reviews: "1 avis" },
 
   { name: "Hugo Perrin", initials: "HP", color: "#3b3bce", rating: 5,
+
     title: "Bon hacker",
+
     body: "Un très bon hacker. Je suis vraiment épaté par son professionnalisme. Il a tenu sa parole du début à la fin, et franchement, ça fait plaisir de tomber sur quelqu'un de sérieux.",
+
     date: "17 aout 2026", reviews: "1 avis" },
 
   { name: "Claire Moreau", initials: "CM", color: "#00b67a", rating: 5,
+
     title: "Merci Alex !",
+
     body: "Tu m'as sauvé la vie 😭 Je te dois une fière chandelle !",
+
     date: "12 aout 2026", reviews: "1 avis" }
+
 ];
 
 const STAR_SVG = '<svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9L22 9.6l-5.5 4.8L18.2 22 12 17.9 5.8 22l1.7-7.6L2 9.6l7.1-.7z"/></svg>';
 
 // Répartition personnalisée : page 1 = 7 avis, page 2 = 5 avis
+
 const PAGE_SIZES = [7, 5];
+
 const TOTAL_PAGES = PAGE_SIZES.length;
+
 let currentPage = 1;
 
 function getPageBounds(page) {
+
   let start = 0;
+
   for (let i = 0; i < page - 1; i++) {
+
     start += PAGE_SIZES[i];
+
   }
+
   const end = start + PAGE_SIZES[page - 1];
+
   return { start, end };
+
 }
 
 function buildStars(rating) {
+
   let html = `<div class="stars rating-${rating}">`;
+
   for (let i = 0; i < 5; i++) {
+
     html += `<div class="star ${i < rating ? 'filled' : 'empty'}">${STAR_SVG}</div>`;
+
   }
+
   html += `</div>`;
+
   return html;
+
 }
 
 function buildReviewCard(review) {
+
   return `
+
     <div class="review-card">
+
       <div class="review-header">
+
         <div class="avatar" style="background:${review.color};">${review.initials}</div>
+
         <div class="user-info">
+
           <div class="user-name">${review.name}</div>
-          <div class="user-meta">FR &bull; ${review.reviews}</div>
+
+          <div class="user-meta">FR • ${review.reviews}</div>
+
         </div>
+
         <div class="review-time">${review.date}</div>
+
       </div>
 
       ${buildStars(review.rating)}
 
       <p class="review-title">${review.title}</p>
+
       <p class="review-body">${review.body}</p>
 
       <div class="tags">
+
         <span class="tag">${review.date}</span>
+
         <span class="tag">Avis spontané</span>
+
       </div>
 
       <div class="actions">
+
         <button class="action-btn">
+
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+
           Utile
+
         </button>
+
         <button class="action-btn">
+
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>
+
           Partager
+
         </button>
+
         <button class="flag-btn">
+
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+
         </button>
+
       </div>
+
     </div>
+
   `;
+
 }
 
 function renderPage(page, faireDefiler) {
+
   // Ne rien faire si la page demandée n'existe pas (bornes atteintes)
+
   if (page < 1 || page > TOTAL_PAGES) return;
 
   // Par défaut, on défile (cas des clics sur pagination). On désactive
+
   // explicitement ce comportement pour l'affichage initial de la page.
+
   if (faireDefiler === undefined) faireDefiler = true;
 
   currentPage = page;
+
   const { start, end } = getPageBounds(page);
+
   const pageReviews = reviewsData.slice(start, end);
 
   const container = document.getElementById('reviews-row');
+
   if (container) {
+
     container.innerHTML = pageReviews.map(buildReviewCard).join('');
+
   }
 
   // Met à jour l'état actif des numéros de page
+
   document.querySelectorAll('.page-num').forEach(function (btn) {
+
     btn.classList.toggle('active', parseInt(btn.dataset.page, 10) === page);
+
   });
 
   // Désactive Précédent/Suivant en début/fin de liste
+
   const btnPrev = document.getElementById('btn-prev');
+
   const btnNext = document.getElementById('btn-next');
+
   if (btnPrev) btnPrev.disabled = page === 1;
+
   if (btnNext) btnNext.disabled = page === TOTAL_PAGES;
 
   // Remonte en haut de la section avis pour voir le premier avis de la page
+
   // — uniquement lors d'un vrai changement de page via la pagination.
+
   if (faireDefiler) {
+
     document.querySelector('.reviews-wrapper')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
   }
+
 }
 
 // Numéros de page
+
 document.querySelectorAll('.page-num').forEach(function (btn) {
+
   btn.addEventListener('click', function () {
+
     renderPage(parseInt(btn.dataset.page, 10));
+
   });
+
 });
 
 // Précédent / Suivant
+
 document.getElementById('btn-prev')?.addEventListener('click', function () {
+
   if (currentPage > 1) renderPage(currentPage - 1);
+
 });
+
 document.getElementById('btn-next')?.addEventListener('click', function () {
+
   if (currentPage < TOTAL_PAGES) renderPage(currentPage + 1);
+
 });
 
 // Affichage initial — pas de défilement automatique, on reste en haut de page
+
 renderPage(1, false);
 
 // Interactions des boutons "Utile" et "Partager" (délégation d'événement,
+
 // car les avis sont recréés dynamiquement à chaque changement de page)
+
 document.addEventListener('click', function (e) {
+
   const btn = e.target.closest('.action-btn');
+
   if (!btn) return;
 
   const label = btn.textContent.trim();
+
   if (label === 'Utile') {
+
     btn.style.color = '#00b67a';
+
   } else if (label === 'Partager') {
+
     if (navigator.share) {
+
       navigator.share({ title: document.title, url: window.location.href });
+
     } else {
+
       navigator.clipboard.writeText(window.location.href);
+
     }
+
   }
+
 });
 
 // ==========================================================
+
 // Bouton fermer (×) de la barre de navigateur factice
+
 // Cette page est destinée à être ouverte dans un nouvel onglet
+
 // (window.open depuis le site principal), donc window.close()
+
 // fonctionne pour la refermer. Si jamais elle a été ouverte
+
 // autrement (onglet non ouvert par script), on revient en arrière.
+
 // ==========================================================
+
 document.querySelector('.browser-close')?.addEventListener('click', function () {
+
   // Cas 1 : la page est chargée dans l'iframe du popup sur l'accueil
+
   // → on demande à la page parente de fermer le popup.
+
   if (window.top !== window.self && typeof window.parent.fermerAvisOverlay === 'function') {
+
     window.parent.fermerAvisOverlay();
+
     return;
+
   }
 
   // Cas 2 : la page a été ouverte directement (nouvel onglet, test manuel...)
+
   window.close();
+
   setTimeout(function () {
+
     if (window.history.length > 1) {
+
       window.history.back();
+
     }
+
   }, 100);
+
 });
+
 </script>
 
 </body>
+
 </html>
