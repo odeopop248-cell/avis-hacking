@@ -1783,7 +1783,7 @@ body {
       <button class="browser-close" type="button" aria-label="Fermer la fenêtre">&times;</button>
       <div class="browser-url-bar" aria-label="Adresse du site">
         <svg viewBox="0 0 24 24" class="browser-lock" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-        <span>trustpilot.com/review/alexlepro.vercel.app/</span>
+        <span>trustpilot.com/review/alexlepro-delta.vercel.app/</span>
       </div>
     </div>
 
@@ -1843,7 +1843,7 @@ body {
 
     </div>
 
-    <button class="visit-btn" onclick="window.open('https://alexlepro.vercel.app/', '_blank')">
+    <button class="visit-btn" onclick="window.open('https://alexlepro-delta.vercel.app/', '_blank')">
 
       Visiter le site web
 
@@ -1881,7 +1881,7 @@ body {
 
   </div>
 
-  <h1 class="company-name">alexlepro.vercel.app</h1>
+  <h1 class="company-name">alexlepro-delta.vercel.app</h1>
 
   <div class="rating-row">
 
@@ -1911,7 +1911,7 @@ body {
 
   <a href="https://fr.trustpilot.com/categories/computer_consultant" target="_blank" rel="noopener" class="breadcrumb-item current">Consultant Informatique</a>
 
-<a href="https://www.trustpilot.com/evaluate/alexlepro.vercel.app/?addcompany=true" class="write-review-btn" style="text-decoration: none;" target="_blank" rel="noopener">
+<a href="https://www.trustpilot.com/evaluate/alexlepro-delta.vercel.app/?addcompany=true" class="write-review-btn" style="text-decoration: none;" target="_blank" rel="noopener">
 
   <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
 
@@ -2488,12 +2488,28 @@ document.addEventListener('click', function (e) {
 
 </html>
 <script>
-document.querySelector('.browser-close')?.addEventListener('click', function () {
-  if (window.top !== window.self && typeof window.parent.fermerAvisOverlay === 'function') {
-    window.parent.fermerAvisOverlay();
-    return;
+document.addEventListener('click', function (e) {
+  const btn = e.target.closest('.browser-close');
+
+  if (!btn) return;
+
+  e.preventDefault();
+
+  console.log('Clic sur le X détecté');
+
+  if (window.self !== window.top) {
+    console.log('Iframe détectée : envoi du message');
+
+    window.parent.postMessage(
+      { type: 'close-avis' },
+      '*'
+    );
+  } else {
+    window.close();
+
+    if (window.history.length > 1) {
+      window.history.back();
+    }
   }
-  window.close();
-  if (window.history.length > 1) window.history.back();
 });
 </script>
